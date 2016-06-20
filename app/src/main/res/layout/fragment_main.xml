@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jasper.virgielowee2016.MainFragment"
+    android:background="#d1546f">
+
+    <ImageView
+        android:layout_width="235dp"
+        android:layout_height="313dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center"
+        android:nestedScrollingEnabled="false"
+        android:src="@drawable/logo" />
+</FrameLayout>
