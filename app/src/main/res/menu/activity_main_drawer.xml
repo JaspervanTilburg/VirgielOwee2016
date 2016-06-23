@@ -7,13 +7,16 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_lineup"
-            android:title="Line-up" />
+            android:title="Programma" />
         <item
             android:id="@+id/nav_selfies"
             android:title="Selfies" />
         <item
-            android:id="@+id/nav_kaart"
-            android:title="Kaart"/>
+            android:id="@+id/nav_paap"
+            android:title="Raad de Paap"/>
+        <item
+            android:id="@+id/nav_biertje"
+            android:title="Biertje!"/>
     </group>
 
 </menu>
