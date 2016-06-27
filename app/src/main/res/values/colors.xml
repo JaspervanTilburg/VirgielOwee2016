@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="lichtblauw">#7ACDF4</color>
+    <color name="donkerblauw">#5FAFC1</color>
+    <color name="lichtroze">#F35567</color>
+    <color name="donkerroze">#BF4351</color>
+    <color name="logoroze">#D1546F</color>
+    <color name="achtergrondroze">#BE3B52</color>
 </resources>

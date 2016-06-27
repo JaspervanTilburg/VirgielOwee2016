@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/items_app"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:title="Home" />
@@ -17,6 +18,16 @@
         <item
             android:id="@+id/nav_biertje"
             android:title="Biertje!"/>
+    </group>
+
+    <group android:id="@+id/items_site"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_site"
+            android:title="Website"/>
+        <item
+            android:id="@+id/nav_fm"
+            android:title="Virgiel FM"/>
     </group>
 
 </menu>

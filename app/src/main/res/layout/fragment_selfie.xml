@@ -6,12 +6,11 @@
     android:background="@drawable/achtergrond"
     tools:context="com.example.jasper.virgielowee2016.SelfieFragment">
 
-    <ImageView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/img_selfies"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop" />
+        android:id="@+id/selfie_view"
+        android:layout_gravity="center" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/photo_button"
