@@ -2,12 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasper.virgielowee2016.MondayFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.jasper.virgielowee2016.MondayFragment"
+    android:background="@drawable/achtergrond">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Maandag Lineup"
+    <!-- TODO: Implement Monday Program-->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/programma_list"
         android:layout_gravity="center" />
-
 </FrameLayout>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lichtblauw">#7ACDF4</color>
-    <color name="donkerblauw">#5FAFC1</color>
-    <color name="lichtroze">#F35567</color>
+    <color name="donkerblauw">#5abdec</color>
+    <color name="menublauw">#5abdec</color>
+    <color name="highlightblauw">#3C9DCB</color>
+    <color name="lichtroze">#f35567</color>
     <color name="donkerroze">#BF4351</color>
     <color name="logoroze">#D1546F</color>
-    <color name="achtergrondroze">#BE3B52</color>
+    <color name="achtergrondroze">#be3b52</color>
 </resources>

@@ -36,7 +36,6 @@ public class SelfieFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,5 +76,5 @@ public class SelfieFragment extends Fragment implements View.OnClickListener {
             getActivity().startActivityForResult(takePictureIntent, 1);
         }
     }
-    
+
 }

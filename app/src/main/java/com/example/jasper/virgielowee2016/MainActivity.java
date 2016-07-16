@@ -2,6 +2,7 @@ package com.example.jasper.virgielowee2016;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -80,20 +81,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -115,12 +102,20 @@ public class MainActivity extends AppCompatActivity
                     beginTransaction().replace(R.id.fragment_container, new SelfieFragment());
             fragmentTransaction.commit();
         } else if (id == R.id.nav_paap) {
-
+            //TODO: Implement raad de paap
         } else if (id == R.id.nav_biertje) {
             //startActivity(new Intent(this, BiertjeActivity.class));
+            //TODO: Implement biertje drinken
             fragmentTransaction = getSupportFragmentManager().
                     beginTransaction().replace(R.id.fragment_container, new GameFragment());
             fragmentTransaction.commit();
+        } else if (id == R.id.nav_site) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://jouwidealestudententijd.nl/"));
+            startActivity(browserIntent);
+        } else if (id == R.id.nav_fm) {
+            //TODO: Implement radio stream in app
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://virgielfm.nl/"));
+            startActivity(browserIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

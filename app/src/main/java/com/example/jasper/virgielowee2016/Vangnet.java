@@ -12,11 +12,13 @@ public class Vangnet {
     public static final int IMG_HEIGHT = 50;
 
     private int x;
-    private Drawable img;
+    private Drawable lower;
+    private Drawable upper;
 
-    public Vangnet(int x, Drawable img) {
+    public Vangnet(int x, Drawable lower, Drawable upper) {
         this.x = x;
-        this.img = img;
+        this.lower = lower;
+        this.upper = upper;
     }
 
     public int getX() {
@@ -27,8 +29,13 @@ public class Vangnet {
         this.x = x;
     }
 
-    public void draw(Canvas canvas) {
-        img.setBounds(x, canvas.getHeight() - IMG_HEIGHT, x + IMG_WIDTH, canvas.getHeight());
-        img.draw(canvas);
+    public void drawUpper(Canvas canvas) {
+        upper.setBounds(x, canvas.getHeight() - (2 * IMG_HEIGHT), x + IMG_WIDTH, canvas.getHeight() - IMG_HEIGHT);
+        upper.draw(canvas);
+    }
+
+    public void drawLower(Canvas canvas) {
+        lower.setBounds(x, canvas.getHeight() - IMG_HEIGHT, x + IMG_WIDTH, canvas.getHeight());
+        lower.draw(canvas);
     }
 }

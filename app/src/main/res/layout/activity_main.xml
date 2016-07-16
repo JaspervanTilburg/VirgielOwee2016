@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
-        android:background="@color/achtergrondroze"
+        android:background="@color/logoroze"
         app:itemTextColor="@android:color/white"
         app:menu="@menu/activity_main_drawer" />
 

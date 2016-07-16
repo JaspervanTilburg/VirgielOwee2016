@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/title_layout"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="16:55"
+            android:id="@+id/tijd_view"
+            android:layout_gravity="left|top"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="5v5 BORRELTIJD"
+            android:id="@+id/title_view"
+            android:textColor="@color/menublauw"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tijd_view"
+            android:layout_toEndOf="@+id/tijd_view" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Hier nog even een superstuco ondertekstje"
+            android:id="@+id/subtitle_view"
+            android:layout_below="@+id/title_view"
+            android:layout_alignLeft="@+id/title_view"
+            android:layout_alignStart="@+id/title_view"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/underscore"
+        android:layout_below="@+id/title_layout"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="false" />
+
+
+
+</RelativeLayout>

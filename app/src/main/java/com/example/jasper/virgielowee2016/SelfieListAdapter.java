@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -41,6 +42,14 @@ public class SelfieListAdapter extends ArrayAdapter<SelfieItem> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.selfie_layout, parent, false);
         ViewGroup.LayoutParams params = rowView.getLayoutParams();
+
+        Button vo_button = (Button) rowView.findViewById(R.id.vo_button);
+        vo_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Implement vind ik vo
+            }
+        });
 
         new DownloadImageTask((ImageView) rowView.findViewById(R.id.selfie_display)).
                 execute("http://jouwidealestudententijd.nl/selfies/" + data.get(position).getId() + ".jpg");

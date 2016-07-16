@@ -59,8 +59,9 @@ public class BierDrawer extends View implements SensorEventListener {
         sensorManager.registerListener(this, acceleroMeter, SensorManager.SENSOR_DELAY_FASTEST);
 
         pints = new ArrayList<>();
-        Drawable d = getResources().getDrawable(R.drawable.bar);
-        vangnet = new Vangnet(START_X_CATCHER, d);
+        Drawable lower = getResources().getDrawable(R.drawable.onderlip);
+        Drawable upper = getResources().getDrawable(R.drawable.bovenlip);
+        vangnet = new Vangnet(START_X_CATCHER, lower, upper);
         r = new Random();
         counter = 0;
         chance = 80;
@@ -74,11 +75,13 @@ public class BierDrawer extends View implements SensorEventListener {
         CANVAS_WIDTH = canvas.getWidth();
         CANVAS_HEIGHT = canvas.getHeight();
 
+        vangnet.drawUpper(canvas);
+
         for (Pint p : pints) {
             p.draw(canvas);
         }
 
-        vangnet.draw(canvas);
+        vangnet.drawLower(canvas);
 
         checkNewPint();
         incrValues();

@@ -5,10 +5,40 @@
     tools:context="com.example.jasper.virgielowee2016.MainFragment"
     android:background="@drawable/achtergrond">
 
+    <!-- TODO: Implement Right Video-->
     <ImageView
         android:layout_width="235dp"
         android:layout_height="313dp"
         android:id="@+id/imageView2"
         android:layout_gravity="center"
         android:src="@drawable/logo" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/video_button"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@android:drawable/ic_media_play" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/video_view"
+        android:background="#000000">
+
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|bottom"
+            android:visibility="visible"
+            android:id="@+id/videoPlayer"
+            android:layout_centerVertical="true" />
+
+        <MediaController
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mediaController" />
+    </RelativeLayout>
+
 </FrameLayout>
