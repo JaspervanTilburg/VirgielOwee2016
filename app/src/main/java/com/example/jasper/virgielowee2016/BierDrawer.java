@@ -113,7 +113,7 @@ public class BierDrawer extends View implements SensorEventListener {
     }
 
     public boolean detectCollision() {
-        Rect bar = new Rect(vangnet.getX(), CANVAS_HEIGHT - Vangnet.IMG_HEIGHT, vangnet.getX() + Vangnet.IMG_WIDTH, CANVAS_HEIGHT);
+        Rect bar = new Rect(vangnet.getX(), CANVAS_HEIGHT - 10, vangnet.getX() + Vangnet.IMG_WIDTH, CANVAS_HEIGHT);
         Iterator<Pint> it = pints.iterator();
         while (it.hasNext()) {
             Pint p = it.next();

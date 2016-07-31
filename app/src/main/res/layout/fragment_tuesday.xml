@@ -2,13 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasper.virgielowee2016.TuesdayFragment">
+    tools:context="com.example.jasper.virgielowee2016.TuesdayFragment"
+    android:background="@drawable/achtergrond">
 
     <!-- TODO: Implement Tuesday Program-->
-    <TextView
+
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dinsdag Lineup"
-        android:layout_gravity="center"/>
-
+        android:id="@+id/tuesday_list"
+        android:layout_gravity="center" />
 </FrameLayout>

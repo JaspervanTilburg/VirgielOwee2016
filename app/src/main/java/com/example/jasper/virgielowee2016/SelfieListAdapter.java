@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -43,7 +44,7 @@ public class SelfieListAdapter extends ArrayAdapter<SelfieItem> {
         View rowView = inflater.inflate(R.layout.selfie_layout, parent, false);
         ViewGroup.LayoutParams params = rowView.getLayoutParams();
 
-        Button vo_button = (Button) rowView.findViewById(R.id.vo_button);
+        ImageButton vo_button = (ImageButton) rowView.findViewById(R.id.vo_button);
         vo_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -11,17 +11,39 @@
         android:id="@+id/selfie_display"
         android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vind ik &apos;vo"
-        android:id="@+id/vo_button"
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/voteller"
         android:layout_alignBottom="@+id/selfie_display"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/vo_button"
-        android:textColor="@drawable/vo_text" />
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Teller"
+        android:id="@+id/counter_text"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:id="@+id/vo_button"
+        android:scaleType="fitXY"
+        android:background="@drawable/vobutton_layout"
+        android:layout_alignBottom="@+id/selfie_display"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp" />
 
 </RelativeLayout>

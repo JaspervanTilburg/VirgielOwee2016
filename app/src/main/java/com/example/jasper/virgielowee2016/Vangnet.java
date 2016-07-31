@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable;
 public class Vangnet {
 
     public static final int IMG_WIDTH = 300;
-    public static final int IMG_HEIGHT = 50;
+    public static final int IMG_HEIGHT = 138;
 
     private int x;
     private Drawable lower;
@@ -30,7 +30,7 @@ public class Vangnet {
     }
 
     public void drawUpper(Canvas canvas) {
-        upper.setBounds(x, canvas.getHeight() - (2 * IMG_HEIGHT), x + IMG_WIDTH, canvas.getHeight() - IMG_HEIGHT);
+        upper.setBounds(x, canvas.getHeight() - IMG_HEIGHT, x + IMG_WIDTH, canvas.getHeight());
         upper.draw(canvas);
     }
 

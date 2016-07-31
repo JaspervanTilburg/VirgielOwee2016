@@ -17,8 +17,6 @@ import java.util.ArrayList;
 public class MondayFragment extends Fragment {
 
     final ArrayList<ProgrammaItem> programmaitems;
-    private View rootView;
-    private ProgrammaAdapter adapter;
 
     public MondayFragment() {
         programmaitems = new ArrayList<>();
@@ -33,9 +31,9 @@ public class MondayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_monday, container, false);
-        adapter = new ProgrammaAdapter(getContext());
-        final ListView list  = (ListView) rootView.findViewById(R.id.programma_list);
+        View rootView = inflater.inflate(R.layout.fragment_monday, container, false);
+        ProgrammaAdapter adapter = new ProgrammaAdapter(getContext());
+        final ListView list  = (ListView) rootView.findViewById(R.id.monday_list);
         list.setAdapter(adapter);
         adapter.addAll(programmaitems);
         return rootView;
