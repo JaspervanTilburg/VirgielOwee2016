@@ -7,9 +7,26 @@
 
     <!-- TODO: Implement Monday Program-->
 
-    <ListView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/monday_list"
-        android:layout_gravity="center" />
+        android:layout_gravity="center_horizontal">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollViewMonday"
+            android:layout_gravity="center"
+            android:scrollIndicators="none">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/maandagImageView"
+                android:src="@drawable/maandag01"
+                android:visibility="visible" />
+        </ScrollView>
+    </LinearLayout>
+
 </FrameLayout>

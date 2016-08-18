@@ -13,11 +13,8 @@
             android:id="@+id/nav_selfies"
             android:title="Selfies" />
         <item
-            android:id="@+id/nav_paap"
-            android:title="Raad de Paap"/>
-        <item
             android:id="@+id/nav_biertje"
-            android:title="Pinten Vangen"/>
+            android:title="Biertje!"/>
     </group>
 
     <group android:id="@+id/items_site"

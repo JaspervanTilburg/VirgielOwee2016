@@ -16,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BiertjeActivity extends Activity {
+public class BiertjeActivity extends Activity implements SensorEventListener{
 
     private TextView xText, yText, zText;
     private ImageView imageView;
@@ -32,51 +32,48 @@ public class BiertjeActivity extends Activity {
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fill_beer);
         imageView = (ImageView) findViewById(R.id.img_biertje);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-                acceleroMeter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-                sensorManager.registerListener(new RotationListener(), acceleroMeter, sensorManager.SENSOR_DELAY_NORMAL);
-            }
-        });
         imageView.startAnimation(animation);
 
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        acceleroMeter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(this, acceleroMeter, sensorManager.SENSOR_DELAY_NORMAL);
+
         xText = (TextView) findViewById(R.id.x_text);
+        /*yText = (TextView) findViewById(R.id.y_text);
+        zText = (TextView) findViewById(R.id.z_text);*/
     }
 
-    private class RotationListener implements SensorEventListener {
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        /*yText.setText("Y: " + sensorEvent.values[1]);
+        zText.setText("Z: " + sensorEvent.values[2]);*/
 
-        @Override
-        public void onSensorChanged(SensorEvent sensorEvent) {
+        float[] g = new float[3];
+        g = sensorEvent.values.clone();
+        double norm_Of_g = Math.sqrt(g[0] * g[0] + g[1] * g[1] + g[2] * g[2]);
 
-            int rotation = (int) (sensorEvent.values[0] * 10);
-            xText.setText("X: " + rotation);
+        g[0] = (float) (g[0] / norm_Of_g);
+        g[1] = (float) (g[1] / norm_Of_g);
+        g[2] = (float) (g[2] / norm_Of_g);
 
-            Matrix matrix = new Matrix();
-            imageView.setScaleType(ImageView.ScaleType.MATRIX);
-            matrix.setScale(2.5f, 2.5f, imageView.getWidth() / 2, 200);
-            if (Math.abs(rotation) < 35) {
-                matrix.postRotate(rotation, imageView.getWidth() / 2, 200);
-            } else if (rotation < -35) {
-                matrix.postRotate(rotation, imageView.getWidth() * 0.7f, 0);
-            } else if (rotation > 35) {
-                matrix.postRotate(rotation, imageView.getWidth() * 0.3f, 0);
-            }
-            imageView.setImageMatrix(matrix);
+        int rotation = (int) Math.toDegrees(Math.atan2(g[0], g[1]));
+        xText.setText("X: " + rotation);
+
+        Matrix matrix = new Matrix();
+        imageView.setScaleType(ImageView.ScaleType.MATRIX);
+        matrix.setScale(3, 3, imageView.getWidth() / 2, 0);
+        if (Math.abs(rotation) < 35) {
+            matrix.postRotate(rotation, imageView.getWidth() / 2, 0);
+        } else if (rotation < -35){
+            matrix.postRotate(rotation, imageView.getWidth() - 200, 0);
+        } else if (rotation > 35) {
+            matrix.postRotate(rotation, 200, 0);
         }
+        imageView.setImageMatrix(matrix);
+    }
 
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
 
-        }
     }
 }

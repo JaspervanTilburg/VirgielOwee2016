@@ -1,72 +1,66 @@
 package com.example.jasper.virgielowee2016;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubePlayer.Provider;
+
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.MediaController;
-import android.widget.RelativeLayout;
-import android.widget.VideoView;
+import android.widget.Toast;
+import android.content.Intent;
 
-public class VideoActivity extends AppCompatActivity {
+public class VideoActivity extends YouTubeBaseActivity
+        implements YouTubePlayer.OnInitializedListener{
 
-    private VideoView videoPlayer;
-    private MediaController mediaController;
-    private int position;
+    public static final String DEVELOPER_KEY = "replace your own API Key here";
+    private static final int RECOVERY_DIALOG_REQUEST = 1;
+    private static final String VIDEO_ID = "k1HtcRr0xP4";
+
+    YouTubePlayerFragment myYouTubePlayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
-
-        videoPlayer = (VideoView) findViewById(R.id.videoPlayer);
-        if (mediaController == null) {
-            mediaController = new MediaController(this);
-
-            // Set the videoView that acts as the anchor for the MediaController.
-            mediaController.setAnchorView(videoPlayer);
-
-
-            // Set MediaController for VideoView
-            videoPlayer.setMediaController(mediaController);
-        }
-
-        try {
-            //TODO: Get right video
-            int id = R.raw.match;
-            videoPlayer.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + id));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        videoPlayer.requestFocus();
-
-
-        // When the video file ready for playback.
-        videoPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-            public void onPrepared(MediaPlayer mediaPlayer) {
-
-
-                videoPlayer.seekTo(position);
-                if (position == 0) {
-                    videoPlayer.start();
-                }
-
-                // When video Screen change size.
-                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
-                    @Override
-                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-
-                        // Re-Set the videoView that acts as the anchor for the MediaController
-                        mediaController.setAnchorView(videoPlayer);
-                    }
-                });
-            }
-        });
+        setContentView(R.layout.you_tube_api);
+        myYouTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager()
+                .findFragmentById(R.id.youtubeplayerfragment);
+        myYouTubePlayerFragment.initialize(DEVELOPER_KEY, this);
     }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                        YouTubeInitializationResult errorReason) {
+        if (errorReason.isUserRecoverableError()) {
+            errorReason.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
+        } else {
+            String errorMessage = String.format(
+                    "There was an error initializing the YouTubePlayer (%1$s)",
+                    errorReason.toString());
+            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onInitializationSuccess(Provider provider, YouTubePlayer player,
+                                        boolean wasRestored) {
+        if (!wasRestored) {
+            player.cueVideo(VIDEO_ID);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == RECOVERY_DIALOG_REQUEST) {
+            // Retry initialization if user performed a recovery action
+            getYouTubePlayerProvider().initialize(DEVELOPER_KEY, this);
+        }
+    }
+
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerView)findViewById(R.id.youtubeplayerfragment);
+    }
+
 }

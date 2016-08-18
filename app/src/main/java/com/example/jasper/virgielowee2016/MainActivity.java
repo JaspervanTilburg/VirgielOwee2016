@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction = getSupportFragmentManager().
                     beginTransaction().replace(R.id.fragment_container, new SelfieFragment());
             fragmentTransaction.commit();
-        } else if (id == R.id.nav_paap) {
-            //TODO: Implement raad de paap
         } else if (id == R.id.nav_biertje) {
             //startActivity(new Intent(this, BiertjeActivity.class));
             //TODO: Implement biertje drinken

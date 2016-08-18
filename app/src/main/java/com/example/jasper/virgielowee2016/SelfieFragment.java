@@ -3,6 +3,7 @@ package com.example.jasper.virgielowee2016;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.io.File;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 
 import at.markushi.ui.CircleButton;
@@ -47,6 +50,7 @@ public class SelfieFragment extends Fragment implements View.OnClickListener {
         loadSelfies();
         CircleButton imgButton = (CircleButton) rootView.findViewById(R.id.photo_button);
         imgButton.setOnClickListener(this);
+
         return rootView;
     }
 

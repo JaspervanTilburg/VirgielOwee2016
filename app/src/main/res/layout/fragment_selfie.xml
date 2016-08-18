@@ -17,9 +17,10 @@
         android:layout_width="64dip"
         android:layout_height="64dip"
         android:src="@drawable/photobutton"
-        app:cb_color="#99CC00"
-        app:cb_pressedRingWidth="8dip"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="16dp"/>
+    <!--app:cb_color="#99CC00"
+    app:cb_pressedRingWidth="8dip" -->
+
 
 </FrameLayout>

@@ -14,10 +14,30 @@
         android:layout_alignParentTop="true"
         android:text="xText" />
 
+    <!--     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:text="yText"
+         android:id="@+id/y_text"
+         android:layout_below="@+id/x_text"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="75dp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:text="zText"
+         android:id="@+id/z_text"
+         android:layout_below="@+id/y_text"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="73dp" />-->
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/img_biertje"
-        android:src="@drawable/biertje2"
+        android:src="@drawable/biertje"
+        android:paddingTop="100dp"
         android:scaleType="centerCrop" />
 </RelativeLayout>

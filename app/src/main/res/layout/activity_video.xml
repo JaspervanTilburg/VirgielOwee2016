@@ -3,21 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jasper.virgielowee2016.VideoActivity"
-    android:background="#000000"
-    android:visibility="visible">
+    tools:context="virgielonline.virgielowee2016.VideoActivity"
+    android:background="@drawable/achtergrond"
+    android:visibility="visible"
+    android:id="@+id/video">
 
-    <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|bottom"
-        android:visibility="visible"
-        android:id="@+id/videoPlayer"
-        android:layout_centerVertical="true" />
 
-    <MediaController
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mediaController" />
 
 </RelativeLayout>
