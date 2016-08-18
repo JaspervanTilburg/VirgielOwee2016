@@ -11,6 +11,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
 import android.view.View;
@@ -18,10 +19,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by Jasper on 26-6-2016.
@@ -146,6 +166,7 @@ public class BierDrawer extends View implements SensorEventListener {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (!input.getText().equals("")) {
+                    postScore(input.getText().toString(), score);
                     dialogInterface.dismiss();
                     FragmentTransaction fragmentTransaction = ((MainActivity) getContext()).getSupportFragmentManager().
                             beginTransaction().replace(R.id.fragment_container, new HighscoreFragment());
@@ -158,7 +179,7 @@ public class BierDrawer extends View implements SensorEventListener {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 FragmentTransaction fragmentTransaction = ((MainActivity) getContext()).getSupportFragmentManager().
-                        beginTransaction().replace(R.id.fragment_container, new MainFragment());
+                        beginTransaction().replace(R.id.fragment_container, new GameFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -172,6 +193,61 @@ public class BierDrawer extends View implements SensorEventListener {
             }
         });
         dialog.show();
+    }
+
+    public void postScore(String name, final int value) {
+        System.out.println(name + value);
+        Highscore h = new Highscore(value, name);
+        class PostScoreTask extends AsyncTask<Highscore, Void, Void> {
+
+            HttpURLConnection connection;
+            DataOutputStream outputStream = null;
+            InputStream inputStream = null;
+
+
+
+            @Override
+            protected Void doInBackground(Highscore... ids) {
+
+                if (ids[0] == null)
+                    return null;
+
+                Highscore id = ids[0];
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                stream.write(3);
+                InputStream data = new ByteArrayInputStream(stream.toByteArray()); // convert ByteArrayOutputStream to ByteArrayInputStream
+
+                try {
+                    URL url = new URL("http://www.jouwidealestudententijd.nl/api/highscore");
+                    connection = (HttpURLConnection) url.openConnection();
+
+                    connection.setDoInput(true);
+                    connection.setDoOutput(true);
+                    connection.setUseCaches(false);
+
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Connection", "Keep-Alive");
+                    connection.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
+
+                    outputStream = new DataOutputStream(connection.getOutputStream());
+                    String urlParameters = "nickname=" + id.getName() + "&highscore=" + id.gethighscore();
+                    outputStream.writeBytes(urlParameters);
+                    inputStream = connection.getInputStream();
+                    //String result = convertStreamToString(inputStream);
+
+                    //System.out.println("res: "+result);
+                    inputStream.close();
+                    outputStream.flush();
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+        }
+        new PostScoreTask().execute(h);
     }
 
     @Override

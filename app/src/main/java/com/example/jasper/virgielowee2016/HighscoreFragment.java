@@ -3,9 +3,11 @@ package com.example.jasper.virgielowee2016;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.ListViewAutoScrollHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 
 /**
@@ -23,7 +25,11 @@ public class HighscoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_highscore, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_highscore, container, false);
+
+        ListView highscoreList = (ListView) rootView.findViewById(R.id.highscoreList);
+
+        return rootView;
     }
 
 }
