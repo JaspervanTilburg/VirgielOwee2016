@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
@@ -19,29 +18,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
-import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by Jasper on 26-6-2016.
@@ -144,7 +130,7 @@ public class BierDrawer extends View implements SensorEventListener {
             if (bar.intersect(pRec)) {
                 score++;
                 it.remove();
-                TextView scoreView2 = (TextView) getRootView().findViewById(R.id.score_text);
+                TextView scoreView2 = (TextView) getRootView().findViewById(R.id.name_text);
                 scoreView2.setText("" + score);
             } else if (p.getY() > CANVAS_HEIGHT - Pint.PINT_HEIGHT) {
                 return false;

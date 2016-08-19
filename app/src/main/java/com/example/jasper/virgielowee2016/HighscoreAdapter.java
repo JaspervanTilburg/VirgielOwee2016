@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,13 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.score_layout, parent, false);
         ViewGroup.LayoutParams params = rowView.getLayoutParams();
-        final TextView textView = (TextView) rowView.findViewById(R.id.score_text);
-        textView.setText(data.get(position).getName() + "   " + data.get(position).gethighscore());
+        final TextView textView = (TextView) rowView.findViewById(R.id.name_text);
+        final TextView scoreView = (TextView) rowView.findViewById(R.id.score_text);
+        if(position <= 20) {
+            scoreView.setText(data.get(position).gethighscore() + "");
+            textView.setText(data.get(position).getName());
+
+        }
         return rowView;
     }
 }
